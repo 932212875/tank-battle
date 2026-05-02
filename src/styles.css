@@ -1,0 +1,232 @@
+:root {
+  color-scheme: dark;
+  --bg: #10140f;
+  --panel: #1c2718;
+  --panel-2: #26351e;
+  --ink: #f3ffd0;
+  --muted: #b7c797;
+  --accent: #ffd15c;
+  --danger: #ff6b57;
+  --green: #7bd36a;
+  --line: #40512e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Trebuchet MS", "Microsoft YaHei", sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 209, 92, 0.12), transparent 28rem),
+    linear-gradient(135deg, #0b0e0a 0%, var(--bg) 45%, #18210f 100%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  color: #15160d;
+  background: var(--accent);
+  padding: 0.7rem 1rem;
+  box-shadow: 0 4px 0 #9d7725;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+button:hover {
+  filter: brightness(1.08);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  filter: grayscale(0.6);
+}
+
+input {
+  width: 100%;
+  border: 2px solid var(--line);
+  background: #0d120b;
+  color: var(--ink);
+  padding: 0.75rem;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--accent);
+}
+
+.app {
+  width: min(1180px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 26px 0 42px;
+}
+
+.hero {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: stretch;
+}
+
+.brand,
+.panel {
+  border: 3px solid var(--line);
+  background: linear-gradient(180deg, rgba(38, 53, 30, 0.95), rgba(21, 30, 18, 0.96));
+  box-shadow: 0 18px 0 rgba(0, 0, 0, 0.22);
+}
+
+.brand {
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand::after {
+  content: "";
+  position: absolute;
+  inset: auto -30px -50px auto;
+  width: 220px;
+  height: 220px;
+  background:
+    linear-gradient(90deg, transparent 46%, rgba(255,255,255,0.08) 46% 54%, transparent 54%),
+    linear-gradient(0deg, transparent 46%, rgba(255,255,255,0.08) 46% 54%, transparent 54%);
+  background-size: 28px 28px;
+  transform: rotate(12deg);
+}
+
+.brand h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2.3rem, 7vw, 5.8rem);
+  line-height: 0.92;
+  color: var(--accent);
+  text-shadow: 5px 5px 0 #733c1b;
+}
+
+.brand p {
+  max-width: 55ch;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.panel {
+  padding: 22px;
+}
+
+.stack {
+  display: grid;
+  gap: 14px;
+}
+
+.status {
+  min-height: 28px;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 18px;
+}
+
+.room-list {
+  display: grid;
+  gap: 10px;
+  max-height: 530px;
+  overflow: auto;
+}
+
+.room-card {
+  border: 2px solid var(--line);
+  background: #11180e;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.room-card strong,
+.player-row strong {
+  color: var(--accent);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.players {
+  display: grid;
+  gap: 10px;
+}
+
+.player-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  border: 2px solid var(--line);
+  background: #12190f;
+  padding: 12px;
+}
+
+.danger {
+  background: var(--danger);
+  box-shadow: 0 4px 0 #8f3026;
+}
+
+.ready {
+  color: var(--green);
+}
+
+.game-shell {
+  display: grid;
+  grid-template-columns: minmax(300px, 720px) 280px;
+  gap: 18px;
+}
+
+canvas {
+  width: 100%;
+  image-rendering: pixelated;
+  border: 4px solid #5c6d3f;
+  background: #111;
+  box-shadow: 0 18px 0 rgba(0, 0, 0, 0.24);
+}
+
+.hud {
+  display: grid;
+  gap: 12px;
+}
+
+.kbd {
+  display: inline-block;
+  min-width: 1.8rem;
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--line);
+  background: #0c1109;
+  color: var(--accent);
+  text-align: center;
+}
+
+@media (max-width: 840px) {
+  .hero,
+  .layout,
+  .game-shell {
+    grid-template-columns: 1fr;
+  }
+}

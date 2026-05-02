@@ -108,7 +108,7 @@ function connect() {
   });
 
   state.ws.addEventListener("close", () => {
-    state.status = "服务器连接断开，请确认 npm run dev 正在运行。";
+    state.status = `服务器连接断开，请确认后端服务可访问：${wsUrl}`;
     state.screen = "name";
     render();
   });
@@ -167,6 +167,9 @@ function resolveWebSocketUrl() {
   const configuredUrl = import.meta.env.VITE_WS_URL?.trim();
   if (configuredUrl) {
     return configuredUrl;
+  }
+  if (location.hostname.endsWith(".netlify.app")) {
+    return "wss://tank-battle-du3j.onrender.com";
   }
   const protocol = location.protocol === "https:" ? "wss" : "ws";
   return `${protocol}://${location.hostname}:8080`;
